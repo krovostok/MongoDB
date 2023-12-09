@@ -1,0 +1,38 @@
+@startuml
+
+' Define classes for MongoDB collections
+class Produktai {
+  +_id: int
+  +pavadinimas: string
+  +kaina: float
+  +atsargos: int
+  +kategorija: string
+}
+
+class Vartotojai {
+  +_id: int
+  +vardas: string
+  +el_pastas: string
+  +adresas: string
+}
+
+class Uzsakymai {
+  +_id: int
+  +vartotojo_id: int <<FK>>
+  +produktai: []Produktas <<embedded>>
+  +bendra_suma: float
+}
+
+' Define an embedded class for products in orders
+class Produktas {
+  +produktas_id: int
+  +pavadinimas: string
+  +kaina: float
+  +kiekis: int
+}
+
+' Define relationships
+Vartotojai --o Uzsakymai
+Uzsakymai "1" *-- "*" Produktas
+
+@enduml

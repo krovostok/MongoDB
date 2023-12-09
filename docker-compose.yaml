@@ -1,0 +1,17 @@
+services:
+  mongo-stack:
+    image: 'mongo:latest'
+    container_name: mongodb-stack
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data_cont:/data/db
+    restart: unless-stopped
+volumes:
+  mongodb_data_cont:
+
+#   to use mongosh:
+#   docker exec -it 36d5ecdf29d3 mongosh -u root -p password

@@ -12,6 +12,3 @@ services:
     restart: unless-stopped
 volumes:
   mongodb_data_cont:
-
-#   to use mongosh:
-#   docker exec -it 36d5ecdf29d3 mongosh -u root -p password
